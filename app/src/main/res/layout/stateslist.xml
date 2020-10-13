@@ -25,10 +25,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingLeft="20dp">
+        android:layout_margin="2dp">
 
         <LinearLayout
-            android:layout_width="170dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content">
 
             <View
@@ -47,15 +48,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="170dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="right"
             android:layout_height="wrap_content">
 
-            <View
-                android:layout_marginLeft="85dp"
-                android:layout_width="18dp"
-                android:layout_height="23dp"
-                android:background="@drawable/decrease"
-                android:backgroundTint="@color/recoveredcase" />
+
 
             <TextView
                 android:id="@+id/recoveredcase"
@@ -63,6 +61,12 @@
                 android:layout_height="wrap_content"
                 android:text="recovered"
                 android:textSize="15sp" />
+
+            <View
+                android:layout_width="18dp"
+                android:layout_height="23dp"
+                android:background="@drawable/decrease"
+                android:backgroundTint="@color/recoveredcase" />
         </LinearLayout>
 
     </LinearLayout>
