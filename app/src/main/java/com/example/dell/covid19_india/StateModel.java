@@ -5,7 +5,7 @@ package com.example.dell.covid19_india;
  */
 
 public class StateModel {
-    private String state, confimed, active, recovered, deaths, todaysconfimed, todaysdeath, todaysrecovered ;
+    private String state, confirmed, active, recovered, deaths, todaysconfirmed, todaysdeath, todaysrecovered ;
 
     public StateModel() {
     }
@@ -13,11 +13,11 @@ public class StateModel {
     public StateModel(String state, String confirmed, String active, String recovered, String deaths, String todaysconfirmed, String todaysdeath, String todaysrecovered) {
 
         this.state = state;
-        this.confimed = confirmed;
+        this.confirmed = confirmed;
         this.active = active;
         this.recovered = recovered;
         this.deaths = deaths;
-        this.todaysconfimed = todaysconfirmed;
+        this.todaysconfirmed = todaysconfirmed;
         this.todaysdeath = todaysdeath;
         this.todaysrecovered = todaysrecovered;
     }
@@ -31,11 +31,11 @@ public class StateModel {
     }
 
     public String getConfirmed() {
-        return confimed;
+        return confirmed;
     }
 
     public void setConfirmed(String confimed) {
-        this.confimed = confimed;
+        this.confirmed = confimed;
     }
 
     public String getActive() {
@@ -63,11 +63,11 @@ public class StateModel {
     }
 
     public String getTodaysconfirmed() {
-        return todaysconfimed;
+        return todaysconfirmed;
     }
 
-    public void setTodaysconfimed(String todaysconfimed) {
-        this.todaysconfimed = todaysconfimed;
+    public void setTodaysconfirmed(String todaysconfirmed) {
+        this.todaysconfirmed = todaysconfirmed;
     }
 
     public String getTodaysdeath() {
