@@ -20,7 +20,7 @@
 You can Download apk from drive
 * [Covid19India](https://drive.google.com/file/d/1T0afqdAs4ph6oU5jd5r7RqHxDZnbPMRP/view?usp=sharing) 
 
-![Splash Screen](<./COVID/1.png>) 
+![Splash_Screen](<./COVID/1.png>) 
 ![India Dashboard](<./COVID/2.png>) 
 ![List of Indian States](<./COVID/3.png>) 
 ![List of Districts From State](<./COVID/4.png>) 
