@@ -38,9 +38,9 @@ public class IndianStates extends AppCompatActivity {
     CardView cardtop, cardbottom;
     SimpleArcLoader loader;
 
-//    public static Map<String , Integer> stateMap= new HashMap<>();
+    //    public static Map<String , Integer> stateMap= new HashMap<>();
 //    public static Set<String> stateNames = new HashSet<>();
-    public static  List<StateModel> stateModelList = new ArrayList<>();
+    public static List<StateModel> stateModelList = new ArrayList<>();
 
     public static boolean isCalled = false;
     StateModel stateModel;
@@ -51,12 +51,12 @@ public class IndianStates extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indian_states);
 
-        Toast.makeText(IndianStates.this,"Long Press On State to open Districts Wise Detail...",Toast.LENGTH_LONG).show();
+        Toast.makeText(IndianStates.this, "Long Press On State to open Districts Wise Detail...", Toast.LENGTH_LONG).show();
 
         stateList = (ListView) findViewById(R.id.statesList);
-        cardbottom = (CardView)findViewById(R.id.cardbottom);
-        cardtop = (CardView)findViewById(R.id.cardtop);
-        loader =(SimpleArcLoader) findViewById(R.id.loader);
+        cardbottom = (CardView) findViewById(R.id.cardbottom);
+        cardtop = (CardView) findViewById(R.id.cardtop);
+        loader = (SimpleArcLoader) findViewById(R.id.loader);
 
         cardtop.setVisibility(View.GONE);
         cardbottom.setVisibility(View.GONE);
@@ -65,12 +65,12 @@ public class IndianStates extends AppCompatActivity {
 
         fetchData();
 
-                        /*........................For Fetching full detail of states........................ */
+        /*........................For Fetching full detail of states........................ */
         stateList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                startActivity(new Intent(IndianStates.this,StateDetail.class).putExtra("position",position));
+                startActivity(new Intent(IndianStates.this, StateDetail.class).putExtra("position", position));
 
             }
         });
@@ -82,15 +82,15 @@ public class IndianStates extends AppCompatActivity {
 //                    isCalled = true;
 //                    fetchDistrictData();
 //                }
-                startActivity(new Intent(IndianStates.this,StateDistrictWise.class).putExtra("State",position));
-                Toast.makeText(IndianStates.this,stateModelList.get(position).getState(),Toast.LENGTH_LONG).show();
+                startActivity(new Intent(IndianStates.this, StateDistrictWise.class).putExtra("State", position));
+                Toast.makeText(IndianStates.this, stateModelList.get(position).getState(), Toast.LENGTH_LONG).show();
                 return true;
             }
         });
 
     }
 
-    public void fetchData(){
+    public void fetchData() {
         final String jsonString = "https://api.covid19india.org/data.json";
 
         StringRequest request = new StringRequest(Request.Method.GET, jsonString, new Response.Listener<String>() {
@@ -101,26 +101,25 @@ public class IndianStates extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     JSONArray jsonArray = jsonObject.getJSONArray("statewise");
 
-                    for(int i = 1 ; i < jsonArray.length() ; i++)
-                    {
+                    for (int i = 1; i < jsonArray.length(); i++) {
 
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        String statename = jsonObject1.getString((String)("state"));
-                        String confirmed = jsonObject1.getString((String)("confirmed"));
-                        String active = jsonObject1.getString((String)("active"));
-                        String recovered = jsonObject1.getString((String)("recovered"));
-                        String deaths = jsonObject1.getString((String)("deaths"));
-                        String todaysconfimed = jsonObject1.getString((String)("deltaconfirmed"));
-                        String todaysdeath = jsonObject1.getString((String)("deltadeaths"));
-                        String todaysrecovered = jsonObject1.getString((String)("deltarecovered"));
+                        String statename = jsonObject1.getString((String) ("state"));
+                        String confirmed = jsonObject1.getString((String) ("confirmed"));
+                        String active = jsonObject1.getString((String) ("active"));
+                        String recovered = jsonObject1.getString((String) ("recovered"));
+                        String deaths = jsonObject1.getString((String) ("deaths"));
+                        String todaysconfimed = jsonObject1.getString((String) ("deltaconfirmed"));
+                        String todaysdeath = jsonObject1.getString((String) ("deltadeaths"));
+                        String todaysrecovered = jsonObject1.getString((String) ("deltarecovered"));
 
 //                        stateNames.add(statename);
-                        stateModel = new StateModel(statename,  confirmed,  active,  recovered,  deaths,  todaysconfimed,  todaysdeath,  todaysrecovered);
+                        stateModel = new StateModel(statename, confirmed, active, recovered, deaths, todaysconfimed, todaysdeath, todaysrecovered);
                         stateModelList.add(stateModel);
 
                     }
 
-                    MyCustomAdapter myCustomAdapter = new MyCustomAdapter(IndianStates.this,stateModelList);
+                    MyCustomAdapter myCustomAdapter = new MyCustomAdapter(IndianStates.this, stateModelList);
                     stateList.setAdapter(myCustomAdapter);
                     loader.stop();
                     cardtop.setVisibility(View.VISIBLE);
@@ -133,7 +132,7 @@ public class IndianStates extends AppCompatActivity {
                     cardtop.setVisibility(View.VISIBLE);
                     cardbottom.setVisibility(View.VISIBLE);
                     loader.setVisibility(View.GONE);
-                    Toast.makeText(IndianStates.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(IndianStates.this, e.getMessage(), Toast.LENGTH_LONG).show();
 
                 }
 
@@ -141,7 +140,7 @@ public class IndianStates extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(IndianStates.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(IndianStates.this, error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
